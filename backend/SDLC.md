@@ -141,13 +141,13 @@ Spring Boot runs on port `8080` by default. Override in `application.properties`
 - [x] Return structured result to client
 - [x] Add proper error handling throughout
 
-### Phase 4 — React Frontend 🔄 IN PROGRESS
-- [ ] Create React app in Cursor
-- [ ] Build file upload component (PDF + JD textarea)
-- [ ] Build results rendering component (score, cards, sections)
-- [ ] Connect to Spring Boot API via axios
-- [ ] Handle CORS in Spring Boot with `@CrossOrigin`
-- [ ] Add loading state and error handling
+### Phase 4 — React Frontend ✅ COMPLETE
+- [x] Create React app in Cursor
+- [x] Build file upload component (PDF + JD textarea)
+- [x] Build results rendering component (score, cards, sections)
+- [x] Connect to Spring Boot API via axios
+- [x] Handle CORS in Spring Boot with `@CrossOrigin`
+- [x] Add loading state and error handling
 
 ---
 
@@ -223,4 +223,4 @@ frontend/
 
 ---
 
-*Last updated: Phase 3 complete — Wire Everything Together.*
+*Last updated: Phase 4 complete — Application up and running.*
