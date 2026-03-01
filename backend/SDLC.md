@@ -126,22 +126,22 @@ Spring Boot runs on port `8080` by default. Override in `application.properties`
 - [x] Return extracted raw text in the response
 - [x] Test with a real PDF
 
-### Phase 2 — AI Integration 🔄 IN PROGRESS
-- [ ] Get Gemini API key from aistudio.google.com
-- [ ] Store API key in `application.properties`
-- [ ] Create `GeminiService` using WebClient
-- [ ] Write and store prompt template in `src/main/resources/prompts/`
-- [ ] Call Gemini API and return raw response
-- [ ] Handle malformed JSON from AI (self-healing or retry logic)
+### Phase 2 — AI Integration ✅ COMPLETE
+- [x] Get Gemini API key from aistudio.google.com
+- [x] Store API key in `application.properties`
+- [x] Create `GeminiService` using Client
+- [x] Write and store prompt template in `src/main/resources/prompts/`
+- [x] Call Gemini API and return raw response
+- [x] Handle malformed JSON from AI (self-healing or retry logic)
 
-### Phase 3 — Wire Everything Together 🔜 UPCOMING
-- [ ] Create `AnalysisResult` DTO with all fields (score, strengths, gaps, etc.)
-- [ ] Create `POST /api/analyze` endpoint combining PDF extraction + AI call
-- [ ] Parse AI JSON response into DTO using Jackson
-- [ ] Return structured result to client
-- [ ] Add proper error handling throughout
+### Phase 3 — Wire Everything Together ✅ COMPLETE
+- [x] Create `ApiResponse` DTO with all fields (score, strengths, gaps, etc.)
+- [x] Create `POST /resume/analyze` endpoint combining PDF extraction + AI call
+- [x] Parse AI JSON response into DTO using JsonNode and ObjectMapper
+- [x] Return structured result to client
+- [x] Add proper error handling throughout
 
-### Phase 4 — React Frontend 🔜 UPCOMING
+### Phase 4 — React Frontend 🔄 IN PROGRESS
 - [ ] Create React app in Cursor
 - [ ] Build file upload component (PDF + JD textarea)
 - [ ] Build results rendering component (score, cards, sections)
@@ -223,4 +223,4 @@ frontend/
 
 ---
 
-*Last updated: Phase 1 complete — Resume upload and parsing working.*
+*Last updated: Phase 3 complete — Wire Everything Together.*

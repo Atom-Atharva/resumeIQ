@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.multipart.MaxUploadSizeExceededException;
+import org.springframework.web.multipart.MultipartException;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -65,5 +66,31 @@ public class GlobalExceptionHandler {
         );
         ApiResponse<ErrorResponse> apiResponse = ApiResponse.error("A server error occurred.", errorDetails);
         return new ResponseEntity<>(apiResponse, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @ExceptionHandler(MultipartException.class)
+    public ResponseEntity<ApiResponse<ErrorResponse>> handleMultipartException(MultipartException ex, WebRequest request) {
+        ErrorResponse errorDetails = new ErrorResponse(
+                LocalDateTime.now(),
+                HttpStatus.BAD_REQUEST.value(),
+                "Invalid File Upload",
+                "Please upload a valid multipart file.",
+                request.getDescription(false).replace("uri=", "")
+        );
+        ApiResponse<ErrorResponse> apiResponse = ApiResponse.error("File upload failed.", errorDetails);
+        return new ResponseEntity<>(apiResponse, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(GeminiServiceException.class)
+    public ResponseEntity<ApiResponse<ErrorResponse>> handleGeminiException(GeminiServiceException ex, WebRequest request) {
+        ErrorResponse errorDetails = new ErrorResponse(
+                LocalDateTime.now(),
+                HttpStatus.SERVICE_UNAVAILABLE.value(),
+                "AI Service Error",
+                ex.getMessage(),
+                request.getDescription(false).replace("uri=", "")
+        );
+        ApiResponse<ErrorResponse> apiResponse = ApiResponse.error("Resume analysis failed. Please try again.", errorDetails);
+        return new ResponseEntity<>(apiResponse, HttpStatus.SERVICE_UNAVAILABLE);
     }
 }
