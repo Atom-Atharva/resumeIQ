@@ -1,8 +1,8 @@
-import { type ButtonHTMLAttributes, type ReactNode, forwardRef } from "react";
-import { motion } from "framer-motion";
+import { type ReactNode, forwardRef } from "react";
+import { type HTMLMotionProps, motion } from "framer-motion";
 import { Loader2 } from "lucide-react";
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends HTMLMotionProps<"button"> {
     variant?: "primary" | "secondary" | "ghost" | "danger";
     size?: "sm" | "md" | "lg";
     fullWidth?: boolean;
